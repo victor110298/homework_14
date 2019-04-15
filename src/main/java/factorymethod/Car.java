@@ -1,14 +1,17 @@
 package factorymethod;
 
-import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 @ToString
-@AllArgsConstructor
 public class Car implements Vehicle {
+    private static Car instance = null;
     private boolean isTrunk;
     private int countOfWheels;
-    private static Car instance = null;
+
+    private Car(boolean isTrunk, int countOfWheels) {
+        this.isTrunk = isTrunk;
+        this.countOfWheels = countOfWheels;
+    }
 
     public static Car getInstance(boolean isTrunk, int countOfWheels) {
         if (instance == null) {
